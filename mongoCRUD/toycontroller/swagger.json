@@ -1,0 +1,208 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "The purpose of this application is to perform CRUD operation on mongo db",
+    "title": "Employee mongo CRUD",
+    "contact": {
+      "name": "Dayanand C",
+      "email": "dayanand.chinchure@gslab.com"
+    },
+    "version": "1.0.0"
+  },
+  "basePath": "/Employee",
+  "paths": {
+    "/employee": {
+      "get": {
+        "description": "Returns Employee data for employee name provided",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Employee"
+        ],
+        "summary": "Get Employee",
+        "operationId": "getEmployee",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Name of employee",
+            "name": "name",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden, you are not allowed to undertake this operation"
+          },
+          "405": {
+            "description": "Method Not Allowed, likely url is not correct"
+          }
+        }
+      },
+      "put": {
+        "description": "Update Employee data for employee name provided",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Employee"
+        ],
+        "summary": "Update Employee",
+        "operationId": "updateEmployee",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Name of employee",
+            "name": "name",
+            "in": "query",
+            "required": true
+          },
+          {
+            "description": "Employee data",
+            "name": "employeelocalhost:8081/employee?name=Rocky",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Employee Updated",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden, you are not allowed to undertake this operation"
+          },
+          "405": {
+            "description": "Method Not Allowed, likely url is not correct"
+          }
+        }
+      },
+      "post": {
+        "description": "Returns success code",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Employee"
+        ],
+        "summary": "Create Employee",
+        "operationId": "createEmployee",
+        "parameters": [
+          {
+            "description": "Employee data",
+            "name": "employee",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User Created",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden, you are not allowed to undertake this operation"
+          },
+          "405": {
+            "description": "Method Not Allowed, likely url is not correct"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete Employee data for employee name provided",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Employee"
+        ],
+        "summary": "Delete Employee",
+        "operationId": "deleteEmployee",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Name of employee",
+            "name": "name",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Employee"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden, you are not allowed to undertake this operation"
+          },
+          "405": {
+            "description": "Method Not Allowed, likely url is not correct"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Employee": {
+      "type": "object",
+      "title": "Employee ...",
+      "properties": {
+        "address": {
+          "type": "string",
+          "x-go-name": "Address"
+        },
+        "dept": {
+          "type": "string",
+          "x-go-name": "Dept"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ID"
+        },
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        }
+      },
+      "x-go-package": "toy_jarvis/toymodel"
+    }
+  }
+}
