@@ -16,6 +16,6 @@ cmd      ![alt coverage](https://github.com/Dayanand-Chinchure/gophercises/blob/
 cobra    ![alt coverage](https://github.com/Dayanand-Chinchure/gophercises/blob/master/Gophercise-17/cmd/cobra/coverage.svg)<br>
 encrypt  ![alt coverage](https://github.com/Dayanand-Chinchure/gophercises/blob/master/Gophercise-17/encrypt/coverage.svg)<br>
 
-4.Gophercise 17<br>
+4.Gophercise 18<br>
 main     ![alt coverage](https://github.com/Dayanand-Chinchure/gophercises/blob/master/Gophercise-18/coverage.svg)<br>
 Primitive      ![alt coverage](https://github.com/Dayanand-Chinchure/gophercises/blob/master/Gophercise-18/primitive/coverage.svg)<br>
