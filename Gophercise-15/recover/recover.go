@@ -49,11 +49,12 @@ func SourceCodeHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+
 	fileRead, err = ioutil.ReadAll(file)
-	// if err != nil {
-	// 	http.Error(w, err.Error(), http.StatusInternalServerError)
-	// 	return
-	// }
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 
 	lexer := lexers.Get("go")
 	iterator, err := lexer.Tokenise(nil, string(fileRead))

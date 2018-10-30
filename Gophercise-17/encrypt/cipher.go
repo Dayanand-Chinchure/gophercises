@@ -6,7 +6,6 @@ import (
 	"crypto/md5"
 	"crypto/rand"
 	"errors"
-	"fmt"
 	"io"
 )
 
@@ -45,7 +44,6 @@ func DecryptReader(key string, r io.Reader) (*cipher.StreamReader, error) {
 //newCipherBlock create fixed length key and return cipher block
 func newCipherBlock(key string) (cipher.Block, error) {
 	hasher := md5.New()
-	fmt.Fprint(hasher, key)
 	cipherKey := hasher.Sum(nil)
 	return aes.NewCipher(cipherKey)
 }

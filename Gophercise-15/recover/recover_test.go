@@ -35,6 +35,12 @@ func TestRenderFileWithInvalidNo(t *testing.T) {
 	assert.Equal(t, response.Code, 500)
 }
 
+func TestRenderFileWithInvalidFile(t *testing.T) {
+	handler := http.HandlerFunc(SourceCodeHandler)
+	response, _ := executeRequest("Get", "/debug/?filepath=/home/gs-1325/go/src/github.ibm.com/Dayanand-Chinchure/gophercises/recover_middlerware/daaa&line=test", Middleware(handler))
+	assert.Equal(t, response.Code, 500)
+}
+
 func TestRenderFile(t *testing.T) {
 	handler := http.HandlerFunc(SourceCodeHandler)
 	response, _ := executeRequest("Get", "/debug/?filepath=/home/gs-1325/go/src/github.com/Dayanand-Chinchure/gophercises/recover_middleware/main.go&line=10", Middleware(handler))

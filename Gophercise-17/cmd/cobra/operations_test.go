@@ -35,13 +35,29 @@ func TestSetCmdNegative(t *testing.T) {
 	file, _ := os.OpenFile("test.txt", os.O_RDWR|os.O_CREATE, 0755)
 	stdOut := os.Stdout
 	os.Stdout = file
-	setCmd.Run(setCmd, []string{""})
+	setCmd.Run(setCmd, []string{"", ""})
 	file.Seek(0, 0)
 	content, err := ioutil.ReadAll(file)
 	if err != nil {
 		t.Error("Expected nil but got", err)
 	}
 	val := strings.Contains(string(content), "Unable to add secret")
+	assert.Equalf(t, true, val, "Both should be equal")
+	os.Stdout = stdOut
+	defer os.Remove("test.txt")
+}
+
+func TestSetCmdNegativeTwo(t *testing.T) {
+	file, _ := os.OpenFile("test.txt", os.O_RDWR|os.O_CREATE, 0755)
+	stdOut := os.Stdout
+	os.Stdout = file
+	setCmd.Run(setCmd, []string{""})
+	file.Seek(0, 0)
+	content, err := ioutil.ReadAll(file)
+	if err != nil {
+		t.Error("Expected nil but got", err)
+	}
+	val := strings.Contains(string(content), "Not enough arguments")
 	assert.Equalf(t, true, val, "Both should be equal")
 	os.Stdout = stdOut
 	defer os.Remove("test.txt")

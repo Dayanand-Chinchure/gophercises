@@ -1,7 +1,6 @@
 package cobra
 
 import (
-	"errors"
 	"fmt"
 	"path/filepath"
 
@@ -43,11 +42,10 @@ var setCmd = &cobra.Command{
 		var key, value string
 		//Need minimum two arguments
 		if len(args) < 2 {
-			err = errors.New("Not Sufficient arguments")
-			key, value = "", ""
-		} else {
-			key, value = args[0], args[1]
+			fmt.Println("Not enough arguments")
+			return
 		}
+		key, value = args[0], args[1]
 		err = v.Set(key, value)
 		if err != nil {
 			fmt.Println("Unable to add secret")

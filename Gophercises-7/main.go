@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"path/filepath"
 
 	"github.com/Dayanand-Chinchure/gophercises/task/cmd"
@@ -8,13 +9,14 @@ import (
 	homedir "github.com/mitchellh/go-homedir"
 )
 
-func main() {
-	InitApp()
-}
+var homeDir = homedir.Dir
 
 //InitApp ...
-func InitApp() {
-	home, _ := homedir.Dir()
+func main() {
+	home, err := homeDir()
+	if err != nil {
+		fmt.Println("Error reading home directory")
+	}
 	dbPath := filepath.Join(home, "tasks.db")
 	db.Init(dbPath)
 	cmd.RootCmd.Execute()
